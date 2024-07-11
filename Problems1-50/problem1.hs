@@ -1,4 +1,4 @@
-module Project1 (fun1) where
+module Problem1 (fun1) where
 
 import Data.Set (fromList, toList)
 

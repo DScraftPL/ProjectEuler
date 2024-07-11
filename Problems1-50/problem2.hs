@@ -1,4 +1,4 @@
-module Project2 (fun2) where
+module Problem2 (fun2) where
 
 -- to solve puzzle, use fun2 4000000
 fun2 :: (Integral a) => a -> a
