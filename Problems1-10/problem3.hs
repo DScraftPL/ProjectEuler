@@ -3,6 +3,7 @@ module Problem3 (fun3) where
 import Data.List (sort)
 -- a cool module for primes, used to check answers
 import Data.Numbers.Primes (primeFactors)
+import SieveErastotenes (sieveErastotenes)
 
 -- to solve puzzle, use fun3 600851475143 0 or fun3 600851475143 1
 fun3 :: (Eq a, Num a) => Integer -> a -> [Integer] -> [Integer]
@@ -28,6 +29,8 @@ factorsOfNumber' workingNumber listOfFactors listOfNumbers
 -- sieving is too resource heavy, swapping 'sieveErastotenes number' for 'primeFactors number' works fast (or put 10000)
 primeFactorsOf number = filter (\x -> mod number x == 0) (sieveErastotenes 10000)
 
+-- left this for archive, moved to SieveErastotenes.hs
+{-
 -- sieve returns a list of primes up to given limit
 sieveErastotenes :: (Integral a) => a -> [a]
 sieveErastotenes limit = sieveErastotenes' [2 ..] limit []
@@ -37,3 +40,4 @@ sieveErastotenes' :: (Integral a) => [a] -> a -> [a] -> [a]
 sieveErastotenes' list limit primelist
   | limit < head list = sort primelist
   | otherwise = sieveErastotenes' (filter (\x -> mod x (head list) /= 0) (tail list)) limit (primelist ++ [head list])
+-}
