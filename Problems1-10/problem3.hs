@@ -6,18 +6,18 @@ import Data.Numbers.Primes (primeFactors)
 import SieveErastotenes (sieveErastotenes)
 
 -- to solve puzzle, use fun3 600851475143 0 or fun3 600851475143 1
-fun3 :: (Eq a, Num a) => Integer -> a -> [Integer] -> [Integer]
+fun3 :: Int -> Int -> Int
 fun3 number solution
-  | solution == 0 = max (factorsOfNumber number)
-  | solution == 1 = max (primeFactorsOf number)
+  | solution == 0 = maximum (factorsOfNumber number)
+  | solution == 1 = maximum (primeFactorsOf number)
   | otherwise = error "bad number (solution)"
 
 -- using a list of primes up to 10000, function returns a list of primes which divide a number
-factorsOfNumber :: Integer -> [Integer]
+factorsOfNumber :: Int -> [Int]
 factorsOfNumber number = factorsOfNumber' number [] (sieveErastotenes 10000)
 
 -- brute-forcy method of finding all prime factors of a number
-factorsOfNumber' :: Integer -> [Integer] -> [Integer] -> [Integer]
+factorsOfNumber' :: Int -> [Int] -> [Int] -> [Int]
 factorsOfNumber' workingNumber listOfFactors listOfNumbers
   | null listOfNumbers = listOfFactors
   | workingNumber == 1 = listOfFactors
